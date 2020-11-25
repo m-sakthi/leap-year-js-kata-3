@@ -13,8 +13,9 @@ export default class LeapYear extends Component {
   isLeapYear = () => {
     const isDivisibleBy400 = this.yearDivisibleBy(400);
     const isDivisibleBy100 = this.yearDivisibleBy(100);
+    const isDivisibleBy4 = this.yearDivisibleBy(4);
 
-    return isDivisibleBy400 && !(isDivisibleBy100 && !isDivisibleBy400);
+    return isDivisibleBy400 || ((isDivisibleBy4 && !isDivisibleBy100) && !(isDivisibleBy100 && !isDivisibleBy400));
   }
 
   yearDivisibleBy = (_number) => this.state.year % _number === 0;
