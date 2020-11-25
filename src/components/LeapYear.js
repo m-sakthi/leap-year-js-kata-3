@@ -10,6 +10,8 @@ export default class LeapYear extends Component {
     };
   }
 
+  isLeapYear = () => (this.state.year % 400 === 0);
+
   handleInputChange = (e) => {
     const { value } = e.target;
 
@@ -31,7 +33,7 @@ export default class LeapYear extends Component {
         <br />
         <br />
         <span testId="resultSpan">
-          {error ? error : `Entered year is ${year}.`}
+          {error ? error : `Entered year is ${year} is${this.isLeapYear() ? '' : ' not'} leap year.`}
         </span>
       </div>
     );

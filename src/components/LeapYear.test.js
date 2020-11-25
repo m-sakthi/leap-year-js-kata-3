@@ -36,11 +36,11 @@ describe('LeapYear Component', () => {
   });
 
   it("should set the entered year in state", () => {
-    const year = 2020;
+    const year = 2000;
 
     component.find(inputEleQry).prop('onChange')({ target: { value: year } });
 
-    expect(component.find(resultSpan).text()).toEqual(`Entered year is ${year}.`);
+    expect(component.find(resultSpan).text()).toEqual(`Entered year is ${year} is leap year.`);
   });
 
   it("should show error message if year is given in negative", () => {
@@ -49,6 +49,22 @@ describe('LeapYear Component', () => {
     component.find(inputEleQry).prop('onChange')({ target: { value: year } });
 
     expect(component.find(resultSpan).text()).toEqual('Enter a valid year!');
+  });
+
+  it("should check if divisible by 400 is a leap year", () => {
+    const year = 2000;
+
+    component.find(inputEleQry).prop('onChange')({ target: { value: year } });
+
+    expect(component.find(resultSpan).text()).toEqual(`Entered year is ${year} is leap year.`);
+  });
+
+  it("should check if not divisible by 400 is a leap year", () => {
+    const year = 2017;
+
+    component.find(inputEleQry).prop('onChange')({ target: { value: year } });
+
+    expect(component.find(resultSpan).text()).toEqual(`Entered year is ${year} is not leap year.`);
   });
 
 });
