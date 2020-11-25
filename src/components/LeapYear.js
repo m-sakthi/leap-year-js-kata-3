@@ -10,7 +10,7 @@ export default class LeapYear extends Component {
     };
   }
 
-  isLeapYear = () => (this.state.year % 400 === 0);
+  isLeapYear = () => (this.state.year % 400 === 0) && !(this.state.year % 100 === 0 && this.state.year % 400 !== 0);
 
   handleInputChange = (e) => {
     const { value } = e.target;
