@@ -83,4 +83,12 @@ describe('LeapYear Component', () => {
     expect(component.find(resultSpan).text()).toEqual(`Entered year is ${year} is leap year.`);
   });
 
+  it("should check if not divisible by 4 are not leap year", () => {
+    const year = 2017;
+
+    component.find(inputEleQry).prop('onChange')({ target: { value: year } });
+
+    expect(component.find(resultSpan).text()).toEqual(`Entered year is ${year} is not leap year.`);
+  });
+
 });
